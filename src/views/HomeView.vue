@@ -5,7 +5,7 @@
 
 <!--  二级路由   -->
     <router-view></router-view>
-    <footer>底部</footer>
+   <app-footer></app-footer>
   </main>
 </template>
 
@@ -13,12 +13,19 @@
 
 import AppTopnav from '@/components/app-topnav'
 import AppHeader from '@/components/app-header'
+import AppFooter from '@/components/app-footer'
+import { useStore } from 'vuex'
 export default {
   name: 'HomeView',
   components: {
+    AppFooter,
     AppHeader,
     AppTopnav
+  },
 
+  setup(){
+    const store = useStore()
+    store.dispatch('category/getList')
   }
 }
 </script>
